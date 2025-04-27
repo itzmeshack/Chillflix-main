@@ -197,7 +197,7 @@ app.use(flash());
 
 
 
-mongoose.connect(process.env.MONGODB_URI_CLOUD || 'mongodb+srv://elsawilom:Omonzogbe2004.@cluster0.byvppgq.mongodb.net/', {
+mongoose.connect(process.env.MONGODB_URI_CLOUD || 'mongodb+srv://elsawilom:Omonzogbe2004.@cluster0.fwbiz2q.mongodb.net/', {
 
 
 }).then(() => {
@@ -215,7 +215,7 @@ mongoose.connect(process.env.MONGODB_URI_CLOUD || 'mongodb+srv://elsawilom:Omonz
 app.use(
   session({
     store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI_CLOUD || 'mongodb+srv://elsawilom:Omonzogbe2004.@cluster0.byvppgq.mongodb.net/',
+      mongoUrl: process.env.MONGODB_URI_CLOUD || 'mongodb+srv://elsawilom:Omonzogbe2004.@cluster0.fwbiz2q.mongodb.net/',
       collectionName: 'sessions',
       ttl: 14 * 24 * 60 * 60 // 14 days
     }),
