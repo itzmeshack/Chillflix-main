@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chillflix</title>
+    <script defer src="/js_files/index.js"></script>
+    <link rel="stylesheet" href="stylesheet/register.css" />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@100,400,300,200&f[]=boska@300&f[]=chillax@500,300,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=clash-display@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="icon" type="image/png" href="/images_files/file-2.ico">
+
+  </head>
+  <body>
+   
+
+   
+    <header class="header-container">
+
+      <nav class="navbar-container">
+
+          <h1 class="logo-name"><a class="header-links" href="/">CHILLFLIX</a>
+              <i class="fa-brands fa-google-play"></i>
+          </h1>
+         
+
+ 
+
+         
+
+
+          <ul class="all-links">
+            <!--
+              <li class="major-links"><a class="anchor-links" href="/index_files/home.html">HOME</a></li>
+              <li class="major-links"><a class="anchor-links" href="/index_files/movies.html">MOVIES</a></li>
+              <li class="major-links"><a class="anchor-links" href="/index_files/tvseries.html">TV SERIES</a></li>
+              <li class="major-links"><a class="anchor-links" href="/index_files/topimdb.html">TOP IMDB</a></li>
+            -->
+              <li class="major-links"><a class="logins" href="login">Login</a></li>
+
+          </ul>
+      </nav>
+  </header>
+
+
+  <div class="register">
+
+
+    
+    <div class="info-input-container">
+      <div id="error-message" style="color: red; display: none; font-size: 20px;">Please fill in both email and password fields!</div>
+      <div id="error-message-image" style="color: red; display: none; font-size: 20px;">Please upload image!</div>
+
+
+      <form id="registerForm" action="/register" method="POST" enctype="multipart/form-data">
+
+
+
+  
+
+
+        <h1 class="create">Create an account </h1>
+        <div class="file-upload">
+          <div class="file-input-wrapper">
+              <button type="button" class="file-input-button">Choose image display</button>
+              <input type="file" name="image" id="file-input" accept="image/*" class="file-input" onchange="previewImage(event)">
+          </div>
+          <div class="image-containers">
+              <img id="image-preview" alt="select a profile">
+              <div id="image-error-message" style="color: red;"></div>
+          </div>
+      </div>
+
+
+     
+        <div class="email-info">
+            <input type="email" name="email" id="email" class="input" placeholder="enter email">
+
+        </div>
+        <div class="pass-info">
+            <input type="password" name="password" id="password" class="input-pass" placeholder="enter password">
+
+        </div>
+
+        <script>
+          // Trigger file input click when button is clicked
+          document.querySelector('.file-input-button').addEventListener('click', function() {
+              document.getElementById('file-input').click();
+          });
+      
+          // Preview the selected image
+          function previewImage(event) {
+              const input = event.target;
+              const preview = document.getElementById('image-preview');
+              const errorMessage = document.getElementById('error-message-image');
+              const file = input.files[0];
+      
+              if (file && file.type.startsWith('image/')) {
+                  const reader = new FileReader();
+                  reader.onload = function(e) {
+                      preview.src = e.target.result;
+                      preview.style.display = 'inline';
+                      errorMessage.textContent = '';
+                  };
+                  reader.readAsDataURL(file);
+              } else {
+                  preview.style.display = 'none';
+                  preview.src = '';
+                  errorMessage.textContent = 'Please select a valid image file.';
+              }
+          }
+      </script>
+      
+      <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const fileInput = document.getElementById('file-input');
+    const errorMessage = document.getElementById('error-message-image');
+
+    let valid = true;
+
+    // Validate email
+    if (!email.value) {
+        email.style.border = '1px solid red';
+        valid = false;
+    } else {
+        email.style.border = '';
+    }
+
+    // Validate password
+    if (!password.value) {
+        password.style.border = '1px solid red';
+        valid = false;
+    } else {
+        password.style.border = '';
+    }
+
+    // Validate file input
+    if (!fileInput.files.length) {  // Check if a file is selected
+        fileInput.style.border = '1px solid red';
+        errorMessage.textContent = 'Please select an image file.';
+        errorMessage.style.display = 'block';
+        valid = false;
+    } else {
+        fileInput.style.border = '';
+        errorMessage.textContent = '';
+        errorMessage.style.display = 'none';
+    }
+
+    // Prevent form submission if the form is invalid
+    if (!valid) {
+        event.preventDefault();
+    }
+});
+
+      </script>
+      
+        <!--
+
+       
+        <div class="pass-info-2">
+            <input type="password" name="current-password" id="" class="input-pass-2" placeholder="confirm password">
+
+        </div>
+         -->
+
+        <button  class="sign-up" type="submit">Register</button>
+
+
+    </form>
+    
+    </div>
+   
+
+
+
+
+  </div>
+
+
+
+
+  
+
+
+
+
+
+<!--
+
+
+  <footer class="footer-continer">
+    <div class="footer-about-us">
+     <h4 class="about">About us</h4>
+     <p class="section-talk">
+      Chillflix is free tv shows streaming website with zero ads, it allows you watch tv shows online, watch tv shows online free in high quality for free. You can also download full tv shows and watch it later if you want.
+      This site does not store any files on our server, we only linked to the media which is hosted on 3rd party services.
+     </p>
+    </div>
+
+    <div class="footer-links">
+        <h4 class="link-sec"> Links</h4>
+            <a href="/" class="cat-links">Movies</a>
+            <a href="/" class="cat-links">Tv series</a>
+            <a href="/" class="cat-links">Top IMDb</a>
+            <a href="/" class="cat-links">Action</a>
+            <a href="/" class="cat-links">Drama</a>
+            <a href="/" class="cat-links">Comedy</a>
+            <a href="/" class="cat-links">Horror</a>
+            <a href="/" class="cat-links">Mystry</a>
+            <a href="/" class="cat-links">Fantasy</a>
+       
+    </div>
+   </footer>
+   -->
+
+
+
+  </body>
+</html>
