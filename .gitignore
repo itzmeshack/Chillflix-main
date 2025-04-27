@@ -1,5 +1,5 @@
 
 .env
 node_modules
-no-files-usage
+.DS_Store
 .vercel
